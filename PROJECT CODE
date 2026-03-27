@@ -1,0 +1,61 @@
+# spam_detection.py
+
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score
+
+# Sample dataset (you can replace with CSV file later)
+data = {
+    'message': [
+        'Win a free lottery now',
+        'Hello, how are you?',
+        'Claim your prize money now',
+        'Let us meet tomorrow',
+        'Congratulations! You won a car',
+        'Are you coming to class?'
+    ],
+    'label': ['spam', 'ham', 'spam', 'ham', 'spam', 'ham']
+}
+
+df = pd.DataFrame(data)
+
+# Convert labels to numbers
+df['label_num'] = df['label'].map({'ham': 0, 'spam': 1})
+
+# Features and labels
+X = df['message']
+y = df['label_num']
+
+# Convert text to numerical data
+vectorizer = TfidfVectorizer()
+X_vectorized = vectorizer.fit_transform(X)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X_vectorized, y, test_size=0.3, random_state=42
+)
+
+# Train model
+model = MultinomialNB()
+model.fit(X_train, y_train)
+
+# Test model
+y_pred = model.predict(X_test)
+print("Model Accuracy:", accuracy_score(y_test, y_pred))
+
+# User input
+print("\n--- Spam Detection ---")
+user_input = input("Enter a message: ")
+
+# Transform input
+input_vector = vectorizer.transform([user_input])
+
+# Predict
+prediction = model.predict(input_vector)
+
+if prediction[0] == 1:
+    print("This message is SPAM")
+else:
+    print("This message is NOT SPAM")
