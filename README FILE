@@ -1,0 +1,44 @@
+Spam Message Detection System
+# What This Project Is About
+Have you ever received messages like “Congratulations! You won a prize!” or “Click this link to claim reward”?
+ Most of us see these almost every day  and many of them are spam.
+This project is a simple attempt to solve that real-life problem using machine learning.
+It is a Python-based program that can:
+Read a message
+Understand its content
+Predict whether it is Spam or Not Spam (Ham)
+The goal of this project is not just to build something technical, but to apply what I learned in a practical and meaningful way.
+
+# Why I Made This
+Spam messages are something I personally experience a lot. Sometimes they are easy to identify, but other times they look very real and can confuse people.
+While learning about machine learning, I realized this is a perfect example of how technology can help in daily life. So I built this project to:
+Understand how machines process text
+Learn how classification works
+Solve a small but real problem
+
+# How This Project Works
+The system follows a few simple steps:
+Takes a message as input
+Converts the text into numerical form using TF-IDF
+Uses a Naive Bayes model to classify the message
+Outputs whether the message is:
+✅ Not Spam (Ham)
+🚫 Spam
+
+# Technologies Used
+Python
+Pandas
+Scikit-learn
+
+# How to Set Up and Run the Project
+Even if you are a beginner, you can run this project easily by following these steps:
+1. Clone the Repository
+git clone 
+https://github.com/your-username/spam-detection.gitcd spam-detection
+
+2. Install Required Libraries
+Make sure Python is installed, then run:
+pip install
+ 
+pandas scikit-learn
+ 
